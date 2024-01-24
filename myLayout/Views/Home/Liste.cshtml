@@ -1,0 +1,27 @@
+﻿@model List<myLayout.Models.Tuto>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "_Layout";
+}
+<h3 class="titre">Liste des tutos</h3>
+<table border="1">
+    <tr>
+        <th>tutoriel</th>
+        <th>lien</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Titre</td>
+            <td>@Html.ActionLink(item.Lien, "afficher tuto", new { id = item.Id })</td>
+        </tr>
+    }
+</table>
+@section Menu{
+    <ul>
+        <li>@Html.ActionLink("Accueil", "Index")</li>
+        <li class="selectionne">@Html.ActionLink("Liste des tutoriels", "Liste")</li>
+        <li>@Html.ActionLink("Forum", "Forum")</li>
+    </ul>
+}
